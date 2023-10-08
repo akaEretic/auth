@@ -8,16 +8,16 @@ import "google/protobuf/wrappers.proto";
 
 option go_package = "https://github.com/akaEretic/auth/tree/main/grpc/pkg/note_v1;note_v1";
 
-enum Role {
-  ADMIN = 0;
-  USER = 1;
-}
-
 service NoteV1 {
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc Get(GetRequest) returns (GetResponse);
   rpc Update(UpdateRequest) returns (google.protobuf.Empty);
   rpc Delete(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+enum Role {
+  ADMIN = 0;
+  USER = 1;
 }
 
 message UserCreateRequest {
@@ -37,43 +37,39 @@ message UserGetRequest {
 }
 
 message UserGetResponse {
-  int64 id = 1;
-  string name = 2;
-  string email = 3;
-  Role role = 4;
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
+  string name = 1;
+  string email = 2;
+  Role role = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
 }
 
 message UserUpdateRequest {
-  int64 id = 1;
-  google.protobuf.StringValue name = 2;
-  google.protobuf.StringValue email = 3;
-  Role role = 4;
-}
-
-message UserDeleteRequest {
-  int64 id = 1;
+  google.protobuf.StringValue name = 1;
+  google.protobuf.StringValue email = 2;
+  Role role = 3;
 }
 
 message CreateRequest {
-  UserCreateRequest createrequest = 1;
+  UserCreateRequest create = 1;
 }
 
 message CreateResponse {
-  UserCreateResponse createresponse = 1;
+  UserCreateResponse create = 1;
 }
 
 message GetRequest {
-  UserGetRequest getrequest = 1;
+  UserGetRequest get= 1;
 }
 
 message GetResponse {
-  UserGetResponse getresponse = 1;
+  int64 id = 1;
+  UserGetResponse get= 2;
 }
 
 message UpdateRequest {
-  UserUpdateRequest updaterequest = 1;
+  int64 id = 1;
+  UserUpdateRequest update = 2;
 }
 
 message DeleteRequest {
