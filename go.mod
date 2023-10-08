@@ -4,6 +4,8 @@ go 1.20
 
 require google.golang.org/grpc v1.58.2
 
+require google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0 // indirect
+
 require (
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
